@@ -222,3 +222,30 @@ footer {
     background-color: rgb(2, 2, 45);
     color: white;
 }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    /* Shrink the "Welcome." text so it fits the screen ratio */
+    .phototext {
+        font-size: 3rem; /* Reduced from 6rem */
+        bottom: 20px;    /* Pull it closer to the corner */
+        right: 20px;
+    }
+
+    /* Adjust the Nav Bar for thumbs/smaller screens */
+    .glass-nav {
+        width: 90%;      /* Let it span more of the width */
+        gap: 4px;        /* Tighter spacing */
+        padding: 5px;
+    }
+
+    .nav-item {
+        padding: 10px 15px; /* Smaller touch targets */
+        font-size: 0.8rem;
+    }
+
+    #projects img {
+        width: 100%; /* Forces the screenshot to match the phone width */
+        height: auto;
+    }
+}
