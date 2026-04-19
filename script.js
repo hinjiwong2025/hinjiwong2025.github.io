@@ -23,9 +23,16 @@ function changeColor(){
 let housePicture = document.getElementById('house')
 
 function house() {
-    if (housePicture.src.includes('house.jpg')) {
-        housePicture.src = 'royalcrescent.jpg';
+    if (housePicture.src.includes('img/house.jpg')) {
+        housePicture.src = 'img/royalcrescent.jpg';
     } else {
-        housePicture.src = 'house.jpg';
+        housePicture.src = 'img/house.jpg';
     }
 }
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});

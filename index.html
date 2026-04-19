@@ -3,26 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="icons8-download-16.png">
-    <title>About Me</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>STROKE.LTD</header>
-    <div id="name">
-        <h1 id="webTitle">HELLO.</h1>
-        <p id="tryme" onclick="changeColor()">This is me. I make noise. Try me.</p>
-        <nav></nav>
-        <img src="selfieinBQ.jpg" id="selfImage">
+    <nav class="glass-nav">
+        <a href="#" class="nav-item">Home</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#contact" class="nav-item">Contact</a>
+    </nav>
+    <div class="bigphoto-container">
+        <img src="img/royalobservatory.jpg" alt="" id="bigphoto">
+        <span class="phototext">Welcome.</span>
     </div>
-    <div id="photos">
-        <img id='house' src="house.jpg" alt="" onclick="house()">
-        <img src="irelandstreet.jpg" alt="">
-        <img src="alnwick.jpg" alt="">
-        <img src="royalobservatory.jpg" alt="">
+    <div id="about">
+        <h1>About Me</h1>
+        <p>Hey there gorgeous visitor, this is Hin Ji. I am currently 22 years old, studying computing in Singapore Management University. I feel like putting just vocabularies is more concise than the normal way of explaining so...
+           Music (playing, listening, making), Sports (a lot), Computing, Exploring, Travelling, Eating ... just take a look.
+        <br>
+        <p>My Recent Photos!</p>
+        <figure>
+            <img src="img/irelandstreet.jpg" alt="ireland street">
+            <figcaption>On the Street of Dublin~</figcaption>
+        </figure>
+        <figure>
+            <img src="img/house.jpg" alt="flippedHouse" srcset="">
+            <figcaption>Flipped House in Bristol</figcaption>
+        </figure>
+        <figure>
+            <img src="img/drumshot.jpg" alt="" srcset="">
+            <figcaption>Performing at The BlackBird Bar</figcaption>
+        </figure>
+        <figure>
+            <img src="img/audience.jpg" alt="" srcset="">
+            <figcaption>Thank You all for coming~</figcaption>
+        </figure>
+        <figure>
+            <img src="img/vdaydrumshot.jpg" alt="" srcset="">
+            <figcaption>Performing in School for Valentines Day</figcaption>
+        </figure>
+        <figure>
+            <img src="img/ZUTOMAYO.jpg" alt="" srcset="">
+            <figcaption>ずっと真夜中でいいのにでした！</figcaption>
+        </figure>
+        <figure>
+            <img src="img/basket.jpg" alt="" srcset="">
+            <figcaption>Basketball with my friends! (Sick capture)</figcaption>
+        </figure>
+        <figure>
+            <img src="img/bbq.jpg" alt="" srcset="">
+            <figcaption>I can have 烤串 for 6 weeks straight</figcaption>
+        </figure>
+        <figure>
+            <img src="img/se101.jpg" alt="" srcset="">
+            <figcaption>Computing</figcaption>
+        </figure>
     </div>
+
+    <div id="projects">
+        <br>
+        <h1>Made By Me:</h1>
+        <br>
+        <p>Movie Website my groupmates and I created (It Works!)</p><br>
+        <img src="img/homepage.png" alt="" srcset="">
+        <img src="img/registerpage.png" alt="" srcset="">
+        <img src="img/loginpage.png" alt="" srcset="">
+        <img src="img/menupage.png" alt="" srcset="">
+        <img src="img/moviepage.png" alt="" srcset="">
+        <img src="img/moviemanagerpage.png" alt="" srcset="">
+        <br>
+        <br>
+        <p>Some Interesting Music I Created</p><br>
+        🎵 Sunny Car Ride (On a Mountain) (Hip-hop typa beat) <br><br>
+        <audio src="audio/Sunny Car Ride On Mountain (alpha 1.2).mp3" controls label=""></audio> <br><br>
+        🎵 Game Theory (EDM) <br><br>
+        <audio src="audio/null.mp3" controls></audio> 
+        <br>
+        <br>
+    </div>
+
+    <div id="contact">
+        <br>
+        <h1>Contact</h1>
+        <p>Email: <u>hinji.wong.2025@computing.smu.edu.sg</u></p>
+        <p>Telegram: <u>@wonghim</u></p>
+        <br>
+    </div>
+
+    
 </body>
-<h3 id="thankyou">Thank You for visiting. Stay hydrated (not mouth).</h3>
-<script src="script.js"></script>
-<footer id="ending">  Wong Hin Ji, 2025 </footer>
+<footer>
+    <br>
+    <hr>
+    WONG HIN JI • 2026
+</footer>
 </html>
