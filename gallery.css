@@ -1,0 +1,194 @@
+/* 
+
+* {
+    background-color: rgb(80, 0, 0);
+}
+
+#intro {
+    color: rgb(222, 221, 221);
+}
+
+#content {
+    background-color: white;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgb(80,0,0);
+    color: white;
+}
+
+ */
+
+/* --- Global Resets & Typography --- */
+/* --- Global Resets & Typography --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Bodoni Moda", serif;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: whitesmoke;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- New Header Styling (Dark Red Background) --- */
+.main-header {
+    background-color: rgb(80, 0, 0);
+    color: whitesmoke;
+    padding: 60px 20px 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-header a{
+    color: rgb(250, 148, 148);
+}
+
+#intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+#intro p {
+    color: #e0e0e0; /* Slightly softer white for better readability */
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.badge {
+    font-size: 0.8rem;
+    background-color: whitesmoke;
+    color: rgb(80, 0, 0);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* --- Navigation Menu (Inside Header) --- */
+#catalogue ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+#catalogue a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Subtle hover background effect for the links over the red background */
+#catalogue a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Content Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.gallery-section {
+    margin-bottom: 60px;
+}
+
+.gallery-section h2 {
+    color: rgb(80, 0, 0);
+    font-size: 1.6rem;
+    border-left: 4px solid rgb(80, 0, 0);
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+/* --- Image Grid & Figures (Updated for Full Aspect Ratio) --- */
+.grid-container {
+    display: grid;
+    /* Keeps a clean layout that adapts to screen sizes */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+figure {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Forces the figure card to be a flexbox container so the layout stays uniform */
+    display: flex;
+    flex-direction: column;
+}
+
+figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* The frame that holds your photo */
+.img-wrapper {
+    width: 100%;
+    height: 480px; /* Increased height slightly to give full photos room to breathe */
+    overflow: hidden;
+    
+    /* This background color handles the empty space for uncropped wide/tall photos nicely */
+    background-color: #f0f0f0; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure img {
+    /* Magic properties to show the full image without cropping or stretching */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    
+    transition: transform 0.5s ease;
+}
+
+figure:hover img {
+    transform: scale(1.02); /* Keeps a very gentle scale effect */
+}
+
+figcaption {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    color: #444;
+    border-top: 1px solid #eee;
+    background-color: white;
+    
+    /* Pushes the caption perfectly to the bottom of the card if heights vary */
+    margin-top: auto; 
+}
+
+/* --- Footer --- */
+footer {
+    background-color: rgb(80, 0, 0);
+    color: whitesmoke;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
