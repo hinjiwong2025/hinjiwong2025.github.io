@@ -1,5 +1,4 @@
-get a new nav bar
-make a CV section (includes certs and stuff)
+
+make a CV section (includes certs and stuff) <--
 get an actual domain
 
-potentially can make it LOOK more professional
