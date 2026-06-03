@@ -192,3 +192,66 @@ footer {
     font-size: 0.9rem;
     letter-spacing: 2px;
 }
+
+/* --- Mobile Optimization (Screens 768px and smaller) --- */
+@media (max-width: 768px) {
+    /* 1. Reduce header padding and shrink text size slightly */
+    .main-header {
+        padding: 40px 15px 30px 15px;
+    }
+
+    #intro h1 {
+        font-size: 2rem; /* Smaller heading for mobile screens */
+        letter-spacing: 1px;
+    }
+
+    #intro p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* 2. Stack navigation links vertically or tighten them up */
+    #catalogue ul {
+        flex-direction: column; /* Stacks links vertically on small screens */
+        gap: 12px;
+        align-items: center;
+    }
+
+    #catalogue a {
+        font-size: 1rem;
+        padding: 6px 20px;
+        width: 100%;
+        max-width: 200px; /* Keeps buttons clean and tappable */
+        background-color: rgba(255, 255, 255, 0.08); /* Subtle button look on mobile */
+    }
+
+    /* 3. Reduce container spacing so content utilizes screen width */
+    .container {
+        padding: 30px 15px;
+    }
+
+    .gallery-section {
+        margin-bottom: 40px;
+    }
+
+    .gallery-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    /* 4. Force grid columns to drop down to 1 column on phone widths */
+    .grid-container {
+        grid-template-columns: 1fr; /* Takes up full width of the screen */
+        gap: 20px;
+    }
+
+    /* 5. Lower the image height so they don't force too much vertical scrolling */
+    .img-wrapper {
+        height: 320px; /* Keeps full photos highly visible but optimized for phone viewports */
+    }
+    
+    figcaption {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}
