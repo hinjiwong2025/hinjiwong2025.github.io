@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HZ Soundpack</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0d0d0f;
+      --surface:   #18181c;
+      --border:    #2a2a30;
+      --accent:    #c8f135;
+      --text:      #e8e8ec;
+      --muted:     #5a5a66;
+      --active-bg: #1e2a08;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .pad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .pad {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      aspect-ratio: 1;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow: hidden;
+      transition: border-color 0.1s, background 0.1s, transform 0.08s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pad:hover {
+      border-color: var(--accent);
+    }
+
+    .pad:active,
+    .pad.playing {
+      background: var(--active-bg);
+      border-color: var(--accent);
+      transform: scale(0.96);
+    }
+
+    /* Ripple flash on trigger */
+    .pad::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      opacity: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      transition: opacity 0.05s;
+    }
+
+    .pad.playing::after {
+      opacity: 0.08;
+    }
+
+    .pad-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .pad-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      text-align: center;
+      padding: 0 6px;
+    }
+
+    /* Progress bar at bottom of each pad */
+    .pad-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent);
+      border-radius: 0 0 6px 6px;
+      transition: width linear;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>hjhz Soundpack</h1>
+    <p>Click a pad to trigger a Henry sample</p>
+  </header>
+
+  <div class="pad-grid" id="padGrid"></div>
+
+  <footer>Keyboard shortcuts: 1–9</footer>
+
+  <script>
+    // ─────────────────────────────────────────────
+    //  CONFIGURATION — edit names and audio files
+    // ─────────────────────────────────────────────
+    const pads = [
+      { name: "#1", file: "../audio/testing.mp3" },
+      { name: "#2", file: "../audio/BALRIGHT.mp3" },
+      { name: "#3", file: "audio/sample3.mp3" },
+      { name: "#4", file: "audio/sample4.mp3" },
+      { name: "#5", file: "audio/sample5.mp3" },
+      { name: "#6", file: "audio/sample6.mp3" },
+      { name: "#7", file: "audio/sample7.mp3" },
+      { name: "#8", file: "audio/sample8.mp3" },
+      { name: "#9", file: "audio/sample9.mp3" },
+    ];
+
+    // ─────────────────────────────────────────────
+    //  Build the grid
+    // ─────────────────────────────────────────────
+    const grid = document.getElementById("padGrid");
+    const audioElements = [];
+
+    pads.forEach((pad, i) => {
+      // Pre-load audio
+      const audio = new Audio(pad.file);
+      audio.preload = "auto";
+      audioElements.push(audio);
+
+      // Build pad element
+      const el = document.createElement("div");
+      el.className = "pad";
+      el.innerHTML = `
+        <span class="pad-number">${String(i + 1).padStart(2, "0")}</span>
+        <span class="pad-name">${pad.name}</span>
+        <div class="pad-progress" id="progress-${i}"></div>
+      `;
+
+      el.addEventListener("click", () => triggerPad(i, el));
+      grid.appendChild(el);
+    });
+
+    // ─────────────────────────────────────────────
+    //  Trigger logic
+    // ─────────────────────────────────────────────
+    function triggerPad(index, el) {
+      const audio = audioElements[index];
+      const progressBar = document.getElementById(`progress-${index}`);
+
+      // Restart from beginning if already playing
+      audio.currentTime = 0;
+      audio.play().catch(() => {
+        // Autoplay policy or missing file — silently ignore
+      });
+
+      // Visual feedback
+      el.classList.add("playing");
+
+      // Animate progress bar
+      progressBar.style.transition = "none";
+      progressBar.style.width = "0%";
+
+      audio.addEventListener("durationchange", onDuration, { once: true });
+      audio.addEventListener("ended", onEnded, { once: true });
+
+      function onDuration() {
+        const dur = audio.duration;
+        if (isFinite(dur) && dur > 0) {
+          progressBar.style.transition = `width ${dur}s linear`;
+          progressBar.style.width = "100%";
+        }
+      }
+
+      function onEnded() {
+        el.classList.remove("playing");
+        progressBar.style.transition = "none";
+        progressBar.style.width = "0%";
+      }
+    }
+
+    // ─────────────────────────────────────────────
+    //  Keyboard shortcuts: keys 1–9
+    // ─────────────────────────────────────────────
+    document.addEventListener("keydown", (e) => {
+      const num = parseInt(e.key);
+      if (num >= 1 && num <= 9) {
+        const index = num - 1;
+        const el = grid.children[index];
+        if (el) triggerPad(index, el);
+      }
+    });
+  </script>
+
+</body>
+</html>
