@@ -1,225 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Card</title>
-    <style>
-        /* --- Color Palette --- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Splash&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+  <title>Birthday Card</title>
+  <style>
+    /* --- Color Palette --- 
            Dark Brown: #5D4037
            Light Brown: #D7CCC8
            Warm Background: #EFEBE9
            Pink Accent: #F8BBD0
         */
 
-        :root {
-            --dark-brown: #5D4037;
-            --light-brown: #D7CCC8;
-            --bg-color: #EFEBE9;
-            --pink-accent: #F8BBD0;
-        }
+    :root {
+      --dark-brown: #5D4037;
+      --light-brown: #D7CCC8;
+      --bg-color: #EFEBE9;
+      --pink-accent: #F8BBD0;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark-brown);
-            overflow-x: hidden;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark-brown);
+      overflow-x: hidden;
+    }
 
-        /* Confetti Canvas */
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Lets you click through the confetti */
-            z-index: 9999;
-        }
+    /* Confetti Canvas */
+    #confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      /* Lets you click through the confetti */
+      z-index: 9999;
+    }
 
-        /* Header Section */
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background-color: var(--light-brown);
-            border-bottom: 5px solid var(--pink-accent);
-            box-shadow: 0 4px 10px rgba(93, 64, 55, 0.1);
-        }
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background-color: var(--light-brown);
+      border-bottom: 5px solid var(--pink-accent);
+      box-shadow: 0 4px 10px rgba(93, 64, 55, 0.1);
+    }
 
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            color: var(--dark-brown);
-            letter-spacing: 2px;
-        }
+    h1 {
+      font-family: "Splash", cursive;
 
-        p.subtitle {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #795548;
-            font-style: italic;
-        }
+      font-size: 3rem;
+      margin: 0;
+      color: var(--dark-brown);
+      letter-spacing: 2px;
+    }
+    h2 {
+      font-family: "Huninn", sans-serif;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #795548;
+      font-style: italic;
+      font-family: "Huninn", sans-serif;
+    }
 
-        /* Masonry Image Gallery */
-        .gallery-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    /* Masonry Image Gallery */
+    .gallery-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-        .gallery {
-            column-count: 1;
-            column-gap: 20px;
-        }
+    .gallery {
+      column-count: 1;
+      column-gap: 20px;
+    }
 
-        /* Responsive Breakpoints for Grid */
-        @media (min-width: 600px) {
-            .gallery { column-count: 2; }
-        }
-        @media (min-width: 900px) {
-            .gallery { column-count: 3; }
-        }
+    /* Responsive Breakpoints for Grid */
+    @media (min-width: 600px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
 
-        .gallery-item {
-            break-inside: avoid; /* Prevents images from splitting across columns */
-            margin-bottom: 20px;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(93, 64, 55, 0.08);
-            border: 2px solid var(--pink-accent);
-            transition: transform 0.3s ease;
-        }
+    @media (min-width: 900px) {
+      .gallery {
+        column-count: 3;
+      }
+    }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(93, 64, 55, 0.15);
-        }
+    .gallery-item {
+      break-inside: avoid;
+      /* Prevents images from splitting across columns */
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(93, 64, 55, 0.08);
+      border: 2px solid var(--pink-accent);
+      transition: transform 0.3s ease;
+    }
 
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-        }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(93, 64, 55, 0.15);
+    }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 20px;
-            background-color: var(--dark-brown);
-            color: var(--pink-accent);
-            margin-bottom: 0%;
-        }
-    </style>
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 20px;
+      background-color: var(--dark-brown);
+      color: var(--pink-accent);
+      margin-bottom: 0%;
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Confetti Canvas -->
-    <canvas id="confetti"></canvas>
+  <!-- Confetti Canvas -->
+  <canvas id="confetti"></canvas>
 
-    <header>
-        <h1>Happy Birthday <br>HAAAZZZZELLLLLLL!</h1>
-        <p class="subtitle">May 水怪 always be with you ✨</p>
-        <img src="self.jpeg" alt="" style="width: 260px;">
-    </header>
+  <header>
+    <h1>Happy Birthday <br>HAAAZZZZELLLLLLL!</h1>
+    <p class="subtitle">May 水怪 always be with you ✨</p>
+    <img src="self.jpeg" alt="" style="width: 260px; border-radius: 45px;">
+  </header>
 
-    <div class="gallery-container">
-        <div class="gallery">
-            <!-- Replace the src attributes with your own image paths/names -->
-            <div class="gallery-item"><img src="all.jpeg" alt="Birthday Memory 1"></div>
-            <div class="gallery-item"><img src="bdcake.jpeg" alt="Birthday Memory 2"></div>
-            <div class="gallery-item"><img src="mebd.jpeg" alt="Birthday Memory 3"></div>
-            <div class="gallery-item"><img src="munkee.jpeg" alt="Birthday Memory 4"></div>
-            <div class="gallery-item"><img src="weird.jpeg" alt="Birthday Memory 5"></div>
-        </div>
-        <h2>2026 Birthday Card</h2>
-        <div class="gallery-item"><img src="Brown Watercolor Illustrative Birthday Card/1.png" alt="Birthday Memory 5" style="width: 5hr;"></div>
-        <div class="gallery-item"><img src="Brown Watercolor Illustrative Birthday Card/2.png" alt="Birthday Memory 5"></div>
-
+  <div class="gallery-container">
+    <div class="gallery">
+      <!-- Replace the src attributes with your own image paths/names -->
+      <div class="gallery-item"><img src="all.jpeg" alt="Birthday Memory 1"></div>
+      <div class="gallery-item"><img src="bdcake.jpeg" alt="Birthday Memory 2"></div>
+      <div class="gallery-item"><img src="mebd.jpeg" alt="Birthday Memory 3"></div>
+      <div class="gallery-item"><img src="munkee.jpeg" alt="Birthday Memory 4"></div>
+      <div class="gallery-item"><img src="weird.jpeg" alt="Birthday Memory 5"></div>
+    </div>
+    <h2>2026 Birthday Card</h2>
+    <div class="gallery-item"><img src="Brown Watercolor Illustrative Birthday Card/1.png" alt="Birthday Memory 5"
+        style="width: 5hr;"></div>
+    <div class="gallery-item"><img src="Brown Watercolor Illustrative Birthday Card/2.png" alt="Birthday Memory 5">
     </div>
 
-    <footer>
-        <p>Wonghinji 2026</p>
-    </footer>
+  </div>
 
-    <!-- Confetti JavaScript -->
-    <script>
-        const canvas = document.getElementById('confetti');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  <footer>
+    <p>Wonghinji 2026</p>
+  </footer>
 
-        const particles = [];
-        const colors = ['#F8BBD0', '#5D4037', '#D7CCC8', '#FFFFFF', '#FF8A80'];
+  <!-- Confetti JavaScript -->
+  <script>
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+    const particles = [];
+    const colors = ['#F8BBD0', '#5D4037', '#D7CCC8', '#FFFFFF', '#FF8A80'];
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height - canvas.height;
-                this.size = Math.random() * 10 + 5;
-                this.speed = Math.random() * 3 + 2;
-                this.angle = Math.random() * 360;
-                this.spin = Math.random() * 0.2 - 0.1;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-            }
-            update() {
-                this.y += this.speed;
-                this.angle += this.spin;
-                // If it falls off the bottom, loop it back to the top (briefly)
-                if (this.y > canvas.height) {
-                    this.y = -this.size;
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.fillStyle = this.color;
-                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.restore();
-            }
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height - canvas.height;
+        this.size = Math.random() * 10 + 5;
+        this.speed = Math.random() * 3 + 2;
+        this.angle = Math.random() * 360;
+        this.spin = Math.random() * 0.2 - 0.1;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.y += this.speed;
+        this.angle += this.spin;
+        // If it falls off the bottom, loop it back to the top (briefly)
+        if (this.y > canvas.height) {
+          this.y = -this.size;
+          this.x = Math.random() * canvas.width;
         }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      }
+    }
 
-        // Initialize particles
-        for (let i = 0; i < 150; i++) {
-            particles.push(new Particle());
-        }
+    // Initialize particles
+    for (let i = 0; i < 150; i++) {
+      particles.push(new Particle());
+    }
 
-        let animationId;
-        
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            animationId = requestAnimationFrame(animate);
-        }
+    let animationId;
 
-        // Start confetti
-        animate();
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      animationId = requestAnimationFrame(animate);
+    }
 
-        // Stop generating new confetti after 6 seconds to let it settle
-        setTimeout(() => {
-            particles.forEach(p => {
-                p.speed = p.speed * 1.5; // speed up the fall slightly
-            });
-            setTimeout(() => {
-                cancelAnimationFrame(animationId);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }, 3000); // clear canvas entirely after 9 total seconds
-        }, 6000);
+    // Start confetti
+    animate();
 
-    </script>
+    // Stop generating new confetti after 6 seconds to let it settle
+    setTimeout(() => {
+      particles.forEach(p => {
+        p.speed = p.speed * 1.5; // speed up the fall slightly
+      });
+      setTimeout(() => {
+        cancelAnimationFrame(animationId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 3000); // clear canvas entirely after 9 total seconds
+    }, 6000);
+
+  </script>
 </body>
+
 </html>
