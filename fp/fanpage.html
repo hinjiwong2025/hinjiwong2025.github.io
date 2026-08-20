@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Gnu — Tokyo New Mixture Style</title>
+
+<!-- Fonts: a bold Japanese-capable display face + a technical grotesk for body/UI -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Space+Grotesk:wght@400;500;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="fanpage.css">
+</head>
+<body>
+
+  <!-- ============ NAV / THEME SWITCH ============ -->
+  <header class="site-header">
+    <div class="wordmark">
+      <span class="wordmark-en">KING GNU</span>
+      <span class="wordmark-jp">キングヌー</span>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cycle page theme">
+      <span class="theme-toggle-dot" aria-hidden="true"></span>
+      <span id="theme-toggle-label">Dark Mode</span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">J-POP × ALT-ROCK × JAZZ × R&amp;B — TOKYO, JAPAN</p>
+        <h1 class="hero-title">
+          TOKYO CHAOTIC.<br>KING GNU.
+        </h1>
+        <p class="hero-sub">
+          King Gnu welds rock, jazz, funk and classical training into one animal.
+          Four members, two lead voices, one restless sound.
+        </p>
+      </div>
+
+      <div class="hero-photo-frame">
+        <img src="king-gnu-press-photo-bb-japan-courtesy-2025-billboard-1548.jpg" alt="King Gnu band photo" class="hero-photo">
+        <div class="hero-photo-placeholder">
+          <span>Drop band photo here</span>
+          <span class="placeholder-hint">img src="king-gnu.jpg"</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BIO ============ -->
+    <section class="section bio-section">
+      <h2 class="section-label">01 — Who they are</h2>
+      <div class="bio-grid">
+        <p class="bio-text">
+          King Gnu formed in Tokyo in 2013, first as a duo called Mrs. Vinci, then
+          as the five-piece Srv.Vinci, before settling into its current lineup and
+          renaming itself King Gnu in 2017 — after the wildebeest, an animal that
+          gathers into enormous mixed herds.
+        </p>
+        <p class="bio-text">
+          Songwriter and guitarist Daiki Tsuneta and keyboardist/vocalist Satoru
+          Iguchi trade the lead vocal mid-song, sometimes mid-phrase, backed by
+          bassist Kazuki Arai and drummer Yu Seki. The band calls its own genre
+          "Tokyo New Mixture Style" — rock built on a foundation of jazz theory
+          and classical composition, with hip-hop and R&amp;B stitched through it.
+        </p>
+        <p class="bio-text">
+          Their 2019 single <span class="hl">"Hakujitsu"</span> (白日, "Broad
+          Daylight") — written as the theme for the drama <em>Innocence: False
+          Accusation Lawyer</em> — turned them from a cult act into one of
+          Japan's biggest live draws, and 2020's <span class="hl">CEREMONY</span>
+          topped the Oricon albums chart.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SIGNATURE: THE MIXTURE METER ============ -->
+    <section class="section mixture-section">
+      <h2 class="section-label">02 — The mixture, by ear</h2>
+      <p class="mixture-intro">
+        Ask four different fans what King Gnu "is" and you'll get four
+        different answers. Here's roughly how the blend leans, track to track.
+      </p>
+
+      <div class="mixture-meter" role="img" aria-label="Genre blend breakdown: Rock 40%, Jazz and classical theory 25%, R&B and funk 20%, Hip-hop 15%">
+        <div class="mixture-row">
+          <span class="mixture-tag">Rock</span>
+          <div class="mixture-bar"><div class="mixture-fill" style="--pct: 40%; --hue: var(--accent-amber);"></div></div>
+          <span class="mixture-pct">40%</span>
+        </div>
+        <div class="mixture-row">
+          <span class="mixture-tag">Jazz &amp; classical theory</span>
+          <div class="mixture-bar"><div class="mixture-fill" style="--pct: 25%; --hue: var(--accent-teal);"></div></div>
+          <span class="mixture-pct">25%</span>
+        </div>
+        <div class="mixture-row">
+          <span class="mixture-tag">R&amp;B &amp; funk</span>
+          <div class="mixture-bar"><div class="mixture-fill" style="--pct: 20%; --hue: var(--accent-rust);"></div></div>
+          <span class="mixture-pct">20%</span>
+        </div>
+        <div class="mixture-row">
+          <span class="mixture-tag">Hip-hop</span>
+          <div class="mixture-bar"><div class="mixture-fill" style="--pct: 15%; --hue: var(--accent-bone);"></div></div>
+          <span class="mixture-pct">15%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FACTS ============ -->
+    <section class="section facts-section">
+      <h2 class="section-label">03 — A few facts</h2>
+      <div class="facts-grid">
+        <article class="fact-card">
+          <span class="fact-index">01</span>
+          <h3>Two frontmen, one mic stand</h3>
+          <p>Tsuneta and Iguchi split lead vocals within the same song rather
+          than sticking to one "main singer" — a big part of King Gnu's
+          signature sound.</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-index">02</span>
+          <h3>Conservatory-trained</h3>
+          <p>Tsuneta and Iguchi met as students at the Tokyo University of the
+          Arts, which is where the band's jazz-and-classical backbone comes
+          from.</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-index">03</span>
+          <h3>Named after an animal, on purpose</h3>
+          <p>"Gnu" (wildebeest) was chosen because the animal migrates in vast
+          mixed herds — Tsuneta wanted the band's audience to grow the same
+          way.</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-index">04</span>
+          <h3>Written in four days</h3>
+          <p>Their breakout hit "Hakujitsu" was composed and recorded on a
+          tight drama-deadline turnaround — normally Tsuneta sends demos ahead,
+          but this one was built live in studio.</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-index">05</span>
+          <h3>Side project: Millennium Parade</h3>
+          <p>Tsuneta also leads the audiovisual collective Millennium Parade,
+          which shares members and a similarly genre-blurring approach.</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-index">06</span>
+          <h3>I AM SO GRATEFUL</h3>
+          <p>I have been to their concerts twice. Once in Singapore and recent one in Hong Kong.</p>
+        </article>
+      </div>
+    </section>
+
+
+
+  </main>
+<script src="fanpage.js"></script>
+</body>
+</html>
